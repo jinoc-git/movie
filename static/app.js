@@ -19,7 +19,7 @@ window.onload = function() {
   }
 
   //  Card
-  async function movieCard() {
+  async function movieCard( arr ) {
     const movies = await fetchMovie();
 
     const _id = movies.map( item => item.id );
@@ -29,30 +29,62 @@ window.onload = function() {
     const overview = movies.map( item => item.overview );
     const language = movies.map ( item => item.original_language );
     
-    for ( let i in movies ) {
-      const box = document.getElementById( 'flex-box' );
+    const box = document.getElementById( 'flex-box' );
 
-      const outerDiv = document.createElement( 'div' );
-      const innerDiv = document.createElement( 'div' );
-      const img = document.createElement( 'img' );
-      const h3 = document.createElement( 'h3' );
-      const hr = document.createElement( 'hr' );
-      const p = document.createElement( 'p' );
+    if ( !arr ) {
 
-      outerDiv.setAttribute( 'class', 'content' );
-      outerDiv.setAttribute( 'id', _id[i] );
-      img.setAttribute( 'src', `https://image.tmdb.org/t/p/w500/${image[i]}` );
-      img.setAttribute( 'alt', title[i] );
-      innerDiv.setAttribute( 'class', 'content-text' );
-      h3.innerText = title[i];
-      p.innerText = overview[i];
+      for ( let i in movies ) {
+  
+        const outerDiv = document.createElement( 'div' );
+        const innerDiv = document.createElement( 'div' );
+        const img = document.createElement( 'img' );
+        const h3 = document.createElement( 'h3' );
+        const hr = document.createElement( 'hr' );
+        const p = document.createElement( 'p' );
+  
+        outerDiv.setAttribute( 'class', 'content' );
+        outerDiv.setAttribute( 'id', _id[i] );
+        img.setAttribute( 'src', `https://image.tmdb.org/t/p/w500/${image[i]}` );
+        img.setAttribute( 'alt', title[i] );
+        innerDiv.setAttribute( 'class', 'content-text' );
+        h3.innerText = title[i];
+        p.innerText = overview[i];
+  
+        innerDiv.appendChild( h3 );
+        innerDiv.appendChild( hr );
+        innerDiv.appendChild( p );
+        outerDiv.appendChild( img );
+        outerDiv.appendChild( innerDiv );
+        box.appendChild( outerDiv );
+      }
 
-      innerDiv.appendChild( h3 );
-      innerDiv.appendChild( hr );
-      innerDiv.appendChild( p );
-      outerDiv.appendChild( img );
-      outerDiv.appendChild( innerDiv );
-      box.appendChild( outerDiv );
+    } else {
+
+      box.innerHTML = '';
+
+      for ( let num of arr ) {
+        const outerDiv = document.createElement( 'div' );
+        const innerDiv = document.createElement( 'div' );
+        const img = document.createElement( 'img' );
+        const h3 = document.createElement( 'h3' );
+        const hr = document.createElement( 'hr' );
+        const p = document.createElement( 'p' );
+  
+        outerDiv.setAttribute( 'class', 'content' );
+        outerDiv.setAttribute( 'id', _id[num] );
+        img.setAttribute( 'src', `https://image.tmdb.org/t/p/w500/${image[num]}` );
+        img.setAttribute( 'alt', title[num] );
+        innerDiv.setAttribute( 'class', 'content-text' );
+        h3.innerText = title[num];
+        p.innerText = overview[num];
+  
+        innerDiv.appendChild( h3 );
+        innerDiv.appendChild( hr );
+        innerDiv.appendChild( p );
+        outerDiv.appendChild( img );
+        outerDiv.appendChild( innerDiv );
+        box.appendChild( outerDiv );
+      }
     }
 
   }
@@ -87,8 +119,18 @@ window.onload = function() {
       matchIdx.push(idx);
     }
 
-    return matchIdx ;    
+    movieCard( matchIdx );
   }
+
+
+  //  reload
+
+  const h1 = document.querySelector( '.header h1' );
+  
+  h1.addEventListener( 'click', () => {
+    window.location.reload();
+  });
+
 
 
 
