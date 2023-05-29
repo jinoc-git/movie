@@ -29,7 +29,7 @@ window.onload = function() {
     const overview = movies.map( item => item.overview );
     const language = movies.map ( item => item.original_language );
     
-    for ( let i of movies ) {
+    for ( let i in movies ) {
       const box = document.getElementById( 'flex-box' );
 
       const outerDiv = document.createElement( 'div' );
