@@ -90,6 +90,11 @@ window.onload = function() {
   }
 
   movieCard();
+
+  //  Autofocus
+  const autoFocus = document.getElementById( 'search-input' );
+  autoFocus.focus();
+
   
   //  Find
   const frm = document.search;
@@ -124,12 +129,25 @@ window.onload = function() {
 
 
   //  reload
-
   const h1 = document.querySelector( '.header h1' );
-  
+
   h1.addEventListener( 'click', () => {
     window.location.reload();
   });
+
+
+  //  Top btn
+  const topBtn = document.querySelector( 'aside nav' );
+  topBtn.addEventListener( 'click', (e) => {
+    e.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+
+  
 
 
 
