@@ -14,7 +14,7 @@ window.onload = function() {
     const movies = await response.json();
   
     const data = movies.results;
-    console.log(data);
+
     return data;
   }
 
