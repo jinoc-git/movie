@@ -2,15 +2,23 @@
 
 @font-face {
   font-family: 'omnigothic020';
-  src: url(./font/210\ 옴니굴림OTF\ 020.otf);
+  src: url(./font/210\ 옴니고딕OTF\ 020.otf);
 }
 @font-face {
   font-family: 'omnigothic030';
-  src: url(./font/210\ 옴니굴림OTF\ 030.otf);
+  src: url(./font/210\ 옴니고딕OTF\ 030.otf);
 }
 @font-face {
   font-family: 'omnigothic045';
   src: url(./font/210\ 옴니고딕OTF\ 045.otf);
+}
+@font-face {
+  font-family: 'mazius-regular';
+  src: url(./font/MAZIUSREVIEW20.09-Regular.otf);
+}
+@font-face {
+  font-family: 'mazius-extra';
+  src: url(./font/MAZIUSREVIEW20.09-Extraitalic.otf);
 }
 
 *{
@@ -183,6 +191,11 @@ section {
   padding: 10px;
 }
 
+.content-text h3 {
+  text-align: center;
+  font-family: 'mazius-regular';
+}
+
 .content-text hr {
   width: 100%;
   height: 2px;
@@ -199,6 +212,88 @@ section {
   word-wrap: break-word;
   text-overflow: ellipsis;
 }
+
+/********** Modal **********/
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+
+  background-color: rgba(50, 50, 50, 0.8);
+  /* display: none; */
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: 520px;
+  height: 480px;
+  border-radius: 20px;
+
+  background-color: #DCDCDC;
+}
+
+.modal-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 5px 10px 0;
+}
+
+.modal-top > div {
+  display: flex;
+  gap: 10px;
+}
+
+.modal-top p {
+  font-family: 'omnigothic030';
+  color: #333333;
+}
+
+.modal-top button {
+  background-color: transparent;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  padding: 0 10px 10px;
+}
+
+.modal-body h3 {
+  text-align: center;
+  font-family: 'mazius-regular';
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.modal-content {
+  display: flex;
+  gap: 20px;
+}
+
+.modal-content img {
+  width: 275px;
+  border-radius: 15px;
+}
+
+.modal-content p {
+  width: 45%;
+  line-height: 1.3;
+  font-family: 'omnigothic020';
+  word-break: break-word;
+}
+
 
 /***** NAV *****/
 
