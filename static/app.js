@@ -91,10 +91,6 @@ window.onload = function() {
 
   movieCard();
 
-  //  Autofocus
-  const autoFocus = document.getElementById( 'search-input' );
-  autoFocus.focus();
-
   
   //  Find
   const frm = document.search;
@@ -106,14 +102,14 @@ window.onload = function() {
     const movies = await fetchMovie();
 
     const title = movies.map( item => item.title );
-    const titleReplace = title.map( (item) => {
+    const titleReplace = title.map( item => {
       let items = item.replace(/(\s*)/g,'');
       result = items.toLowerCase();
       return result;
     });
 
     const userMovie = frm.searchInput.value.toLowerCase();
-    const matchMovie = titleReplace.filter( (item, i) => {
+    const matchMovie = titleReplace.filter( item => {
       return item.includes(userMovie);
     })
     console.log(matchMovie);
@@ -134,6 +130,11 @@ window.onload = function() {
   h1.addEventListener( 'click', () => {
     window.location.reload();
   });
+
+
+  //  Autofocus
+  const autoFocus = document.getElementById( 'search-input' );
+  autoFocus.focus();
 
 
   //  Top btn
