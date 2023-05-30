@@ -150,6 +150,10 @@ h1 {
   background-color: #DCDCDC;
 }
 
+.btn-focus {
+  box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8);
+}
+
 .material-symbols-outlined.search {
   padding: 5px;
   color: rgba(25 , 25, 25, 0.8);
@@ -166,9 +170,11 @@ section {
   flex-wrap: wrap;
   gap: 20px;
   width: 1200px;
-  min-height: 1080px;
-  margin: 0 auto;
+  min-height: 700px;
+  margin: 0 auto 50px;
   padding: 0 20px;
+
+  color: #FFFFFF;
 }
 
 .content {
@@ -317,10 +323,7 @@ section {
 
 /***** NAV *****/
 
-nav {
-  display: flex;
-  justify-content: center;
-
+nav button {
   position: fixed;
   bottom: 60px;
   right: 60px;
@@ -331,15 +334,11 @@ nav {
   border-radius: 15px;
   text-align: center;
 
-  background-color: #DCDCDC;
-}
-
-nav button {
   cursor: pointer;
   font-family: 'omnigothic045';
   font-size: 16px;
   color: #D6474D;
   
-  background-color: transparent;
+  background-color: #DCDCDC;
 }
 

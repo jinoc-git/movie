@@ -24,10 +24,8 @@ window.onload = function() {
 
     const _id = movies.map( item => item.id );
     const title = movies.map( item => item.title );
-    const average = movies.map( item => item.vote_average );
     const image = movies.map( item => item.poster_path );
     const overview = movies.map( item => item.overview );
-    const language = movies.map ( item => item.original_language );
     
     const box = document.getElementById( 'flex-box' );
 
@@ -112,7 +110,6 @@ window.onload = function() {
     const matchMovie = titleReplace.filter( item => {
       return item.includes(userMovie);
     })
-    console.log(matchMovie);
 
     let matchIdx = [];
     for ( let i in matchMovie ) {
@@ -120,7 +117,13 @@ window.onload = function() {
       matchIdx.push(idx);
     }
 
-    movieCard( matchIdx );
+    if ( matchIdx.length === 0 ) {
+      const box = document.getElementById( 'flex-box' );
+      box.innerText = '찾으시는 영화가 없습니다. 검색어를 확인해 주세요.';
+    } else {
+      movieCard( matchIdx );
+    }
+
   }
 
 
@@ -132,13 +135,8 @@ window.onload = function() {
   });
 
 
-  //  Autofocus
-  const autoFocus = document.getElementById( 'search-input' );
-  autoFocus.focus();
-
-
   //  Top btn
-  const topBtn = document.querySelector( 'aside nav' );
+  const topBtn = document.querySelector( 'aside nav button' );
   topBtn.addEventListener( 'click', (e) => {
     e.preventDefault();
 
@@ -170,10 +168,10 @@ window.onload = function() {
   //  Modal make
   const body = document.querySelector( 'body' );
   
-  async function makeModal(num) {
+  async function makeModal( num ) {
     
     const movies = await fetchMovie();
-    const clickMovie = movies.find( item => item.id === parseInt(num) );
+    const clickMovie = movies.find( item => item.id === parseInt( num ) );
 
     const title = clickMovie.title;
     const average = clickMovie.vote_average;
@@ -200,32 +198,51 @@ window.onload = function() {
     alert(`id : ${num}`);
   }
 
-  //  Modal close
+
+  //  focus
+  const searchBtn = document.querySelector( '.submitBtn' );
+  const _searchInput = document.getElementById( 'search-input' );
+
+  _searchInput.addEventListener( 'focus', () => {
+    _searchInput.classList.toggle( 'btn-focus' );
+  });
+  _searchInput.addEventListener( 'blur', () => {
+    _searchInput.classList.toggle( 'btn-focus' );
+  });
+
+  searchBtn.addEventListener( 'focus', () => {
+    searchBtn.classList.toggle( 'btn-focus' );
+  });
+  searchBtn.addEventListener( 'blur', () => {
+    searchBtn.classList.toggle( 'btn-focus' );
+  });
+
+  topBtn.addEventListener( 'focus', () => {
+    topBtn.classList.toggle( 'btn-focus' );
+  });
+  topBtn.addEventListener( 'blur', () => {
+    topBtn.classList.toggle( 'btn-focus' );
+  });
+
+
+  //  Modal close  
+
   const overlay = document.querySelector( '.overlay' );
+
   overlay.addEventListener( 'click', (e) => {
     if ( e.target.className === 'overlay' ) {
       overlay.classList.toggle( 'active' );
       body.classList.toggle( 'notScroll' );
     }
+    _searchInput.focus();
   });
 
   const closeBtn = document.querySelector( '.close' );
+
   closeBtn.addEventListener( 'click', () => {
     overlay.classList.toggle( 'active' );
     body.classList.toggle( 'notScroll' );
+    _searchInput.focus();
   });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
