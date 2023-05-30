@@ -605,19 +605,43 @@ section {
 nav button {
   position: fixed;
   bottom: 60px;
-  right: 60px;
+  right: 20px;
 
-  cursor: pointer;
-  width: 60px;
-  height: 30px;
+  width: 40px;
+  height: 24px;
   border-radius: 15px;
   text-align: center;
 
   cursor: pointer;
   font-family: 'omnigothic045';
-  font-size: 16px;
+  font-size: 12px;
   color: #D6474D;
   
   background-color: #DCDCDC;
 }
 
+@media( min-width: 768px ) {
+  nav button {
+    position: fixed;
+    bottom: 60px;
+    right: 50px;
+
+    width: 60px;
+    height: 30px;
+
+    font-size: 16px;
+    box-shadow: 0 0 3px 5px rgba(20, 20, 20, 0.8);
+  }
+}
+
+@media( min-width: 1200px ) {
+  nav button {
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+  
+    cursor: pointer;
+    width: 60px;
+    height: 30px;
+  }
+}
