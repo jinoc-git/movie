@@ -158,6 +158,11 @@ h1 {
   color: rgba(25 , 25, 25, 0.8);
 }
 
+@keyframes light {
+  from { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  to { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+}
+
 @media( min-width: 768px ) {
   .header {
     width: 250px;
