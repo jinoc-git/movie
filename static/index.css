@@ -227,14 +227,17 @@ section {
   z-index: 2;
 
   background-color: rgba(50, 50, 50, 0.8);
-  /* display: none; */
+}
+
+.active {
+  display: none;
 }
 
 .modal {
   display: flex;
   flex-direction: column;
   width: 520px;
-  height: 480px;
+  height: 505px;
   border-radius: 20px;
 
   background-color: #DCDCDC;

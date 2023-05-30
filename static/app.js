@@ -149,6 +149,54 @@ window.onload = function() {
   });
 
   
+  //  Modal click
+  const flexBox = document.getElementById( 'flex-box' );
+  flexBox.addEventListener( 'click', (e) => {
+    let content = e.target.parentNode;
+    if ( content.className !== 'content' ) {
+      content = content.parentNode;
+    }
+    
+    const contentId = content.getAttribute('id');
+    
+    if ( contentId === null || contentId === undefined ) {
+      return false
+    }
+
+    makeModal(contentId);
+
+  });
+
+  //  Modal make
+  async function makeModal(num) {
+    
+    const movies = await fetchMovie();
+    const clickMovie = movies.find( item => item.id === parseInt(num) );
+    console.log(clickMovie)
+
+    const title = clickMovie.title;
+    const average = clickMovie.vote_average;
+    const image = clickMovie.poster_path;
+    const overview = clickMovie.overview;
+    const language = clickMovie.original_language;
+
+    const modal = document.querySelector( '.overlay' );
+    const modalTitle = document.querySelector( '.modal-body h3' );
+    const modalAverage = document.querySelector( '.average' );
+    const modalLanguage = document.querySelector( '.language' );
+    const modalImg = document.querySelector( '.modal-content img' );
+    const modalOverview = document.querySelector( '.modal-content p' );
+
+    modalTitle.innerText = title;
+    modalAverage.innerText = average;
+    modalLanguage.innerText = language;
+    modalImg.setAttribute( 'src', `https://image.tmdb.org/t/p/w500/${image}` );
+    modalImg.setAttribute( 'alt', title );
+    modalOverview.innerText = overview;
+
+    modal.classList.toggle('active');
+    alert(`id : ${num}`);
+  }
 
 
 
