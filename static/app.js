@@ -168,11 +168,12 @@ window.onload = function() {
   });
 
   //  Modal make
+  const body = document.querySelector( 'body' );
+  
   async function makeModal(num) {
     
     const movies = await fetchMovie();
     const clickMovie = movies.find( item => item.id === parseInt(num) );
-    console.log(clickMovie)
 
     const title = clickMovie.title;
     const average = clickMovie.vote_average;
@@ -194,10 +195,25 @@ window.onload = function() {
     modalImg.setAttribute( 'alt', title );
     modalOverview.innerText = overview;
 
-    modal.classList.toggle('active');
+    modal.classList.toggle( 'active' );
+    body.classList.toggle( 'notScroll' );
     alert(`id : ${num}`);
   }
 
+  //  Modal close
+  const overlay = document.querySelector( '.overlay' );
+  overlay.addEventListener( 'click', (e) => {
+    if ( e.target.className === 'overlay' ) {
+      overlay.classList.toggle( 'active' );
+      body.classList.toggle( 'notScroll' );
+    }
+  });
+
+  const closeBtn = document.querySelector( '.close' );
+  closeBtn.addEventListener( 'click', () => {
+    overlay.classList.toggle( 'active' );
+    body.classList.toggle( 'notScroll' );
+  });
 
 
 

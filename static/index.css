@@ -150,7 +150,7 @@ h1 {
   background-color: #DCDCDC;
 }
 
-.material-symbols-outlined {
+.material-symbols-outlined.search {
   padding: 5px;
   color: rgba(25 , 25, 25, 0.8);
 }
@@ -239,8 +239,16 @@ section {
   width: 520px;
   height: 505px;
   border-radius: 20px;
+  box-shadow: 0 0 5px 5px rgba(80, 80, 80, 0.8);  
 
-  background-color: #DCDCDC;
+  background-color: #222222;
+}
+
+.notScroll {
+  overflow-y: hidden;
+  width: 100%;
+  height: 100%;
+  touch-action: none;
 }
 
 .modal-top {
@@ -258,11 +266,18 @@ section {
 
 .modal-top p {
   font-family: 'omnigothic030';
-  color: #333333;
+  color: #DCDCDC;
+  cursor: default;
 }
 
 .modal-top button {
+  cursor: pointer;
   background-color: transparent;
+}
+
+.material-symbols-outlined.close {
+  padding: 5px;
+  color: rgba(250 , 250, 250, 0.8);
 }
 
 .modal-body {
@@ -278,6 +293,7 @@ section {
   font-family: 'mazius-regular';
   font-size: 26px;
   font-weight: 700;
+  color: #FFFFFF;
 }
 
 .modal-content {
@@ -295,6 +311,7 @@ section {
   line-height: 1.3;
   font-family: 'omnigothic020';
   word-break: break-word;
+  color: #FFFFFF;
 }
 
 
