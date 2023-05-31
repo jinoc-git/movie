@@ -38,8 +38,9 @@ async function findMovie(e) {
     return result;
   });
 
-  const userMovieTitle = frm.searchInput.value.toLowerCase();
-  const matchMovieTitles = titlesReplace.filter((item, i) => {
+  const userInput = frm.searchInput.value.toLowerCase();
+  const userMovieTitle = userInput.replace(/(\s*)/g, "");
+  const matchMovieTitles = titlesReplace.filter((item) => {
     return item.includes(userMovieTitle);
   });
 
