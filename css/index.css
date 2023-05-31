@@ -85,6 +85,12 @@ h1 {
   color: #FFFFFF;
   font-family: 'omnigothic030';
   font-size: 32px;
+  line-height: 1.3;
+
+  animation-name: light;
+  animation-duration: 4s;
+  animation-delay: 2s;
+  animation-iteration-count: infinite;
 }
 
 .search-area {
@@ -159,8 +165,16 @@ h1 {
 }
 
 @keyframes light {
-  from { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
-  to { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  from { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0) }
+  5% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  10% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.2) }
+  15% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  20% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  25% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.2) }
+  30% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.2) }
+  35% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0.8) }
+  40% { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0) }
+  to { box-shadow: 0 0 5px 5px rgba(100, 100, 100, 0) }
 }
 
 @media( min-width: 768px ) {
