@@ -1,7 +1,6 @@
 import { URL } from "./fetchurl.js";
 import { OPTIONS } from "./options.js";
 import { makeCard } from "./makecard.js";
-import { getMatchMovies } from "./getmatchmovies.js";
 import { setModal } from "./setmodal.js";
 
 //  Fetch
@@ -31,20 +30,14 @@ frm.addEventListener("submit", findMovie);
 async function findMovie(e) {
   e.preventDefault();
   const movies = await fetchMovie();
-  const titles = movies.map((item) => item.title);
-  const titlesReplace = titles.map((item) => {
-    let items = item.replace(/(\s*)/g, "");
-    let result = items.toLowerCase();
-    return result;
-  });
 
   const userInput = frm.searchInput.value.toLowerCase();
   const userMovieTitle = userInput.replace(/(\s*)/g, "");
-  const matchMovieTitles = titlesReplace.filter((item) => {
-    return item.includes(userMovieTitle);
+  const matchMovies = movies.filter((item) => { 
+    let titles = item.title.toLowerCase().replace(/(\s*)/g, "");
+    return titles.includes(userMovieTitle);
   });
 
-  const matchMovies = getMatchMovies(titlesReplace, matchMovieTitles, movies);
   if (matchMovies.length === 0) {
     const box = document.getElementById("flex-box");
     box.innerText = "찾으시는 영화가 없습니다. 검색어를 확인해 주세요.";
