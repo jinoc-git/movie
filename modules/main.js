@@ -1,3 +1,4 @@
+import { URL } from "./fetchurl.js";
 import { OPTIONS } from "./options.js";
 import { makeCard } from "./makecard.js";
 import { getMatchMovies } from "./getmatchmovies.js";
@@ -5,10 +6,7 @@ import { setModal } from "./setmodal.js";
 
 //  Fetch
 const fetchMovie = async function () {
-  const response = await fetch(
-    "https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1",
-    OPTIONS
-  );
+  const response = await fetch(URL, OPTIONS);
   const data = await response.json();
   const movies = data.results;
   return movies;
@@ -17,7 +15,6 @@ const fetchMovie = async function () {
 //  List card
 async function listMovieCard(arr) {
   const movies = await fetchMovie();
-
   if (!arr) {
     makeCard(movies);
   } else {
@@ -31,12 +28,9 @@ listMovieCard();
 //  Search movie
 const frm = document.search;
 frm.addEventListener("submit", findMovie);
-
 async function findMovie(e) {
   e.preventDefault();
-
   const movies = await fetchMovie();
-
   const titles = movies.map((item) => item.title);
   const titlesReplace = titles.map((item) => {
     let items = item.replace(/(\s*)/g, "");
@@ -50,7 +44,6 @@ async function findMovie(e) {
   });
 
   const matchMovies = getMatchMovies(titlesReplace, matchMovieTitles, movies);
-
   if (matchMovies.length === 0) {
     const box = document.getElementById("flex-box");
     box.innerText = "찾으시는 영화가 없습니다. 검색어를 확인해 주세요.";
@@ -59,23 +52,13 @@ async function findMovie(e) {
   }
 }
 
-//  reload
+//  Click logo
 const h1 = document.querySelector(".header h1");
 h1.addEventListener("click", () => {
   window.location.reload();
 });
 
-//  Top btn
-const topBtn = document.querySelector("aside nav button");
-topBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
-});
-
-//  Modal click
+//  Click content
 const flexBox = document.getElementById("flex-box");
 flexBox.addEventListener("click", (e) => {
   let content = e.target.parentNode;
@@ -91,9 +74,8 @@ flexBox.addEventListener("click", (e) => {
   openModal(contentId);
 });
 
-//  Modal make
+//  Open modal
 const body = document.querySelector("body");
-
 async function openModal(num) {
   const movies = await fetchMovie();
   const clickMovie = movies.find((item) => item.id === parseInt(num));
@@ -103,8 +85,34 @@ async function openModal(num) {
 
   const modal = document.querySelector(".overlay");
   modal.classList.toggle("active");
-  body.classList.toggle("notScroll");  
+  body.classList.toggle("notScroll");
 }
+
+//  Close modal
+const overlay = document.querySelector(".overlay");
+overlay.addEventListener("click", (e) => {
+  if (e.target.className === "overlay") {
+    overlay.classList.toggle("active");
+    body.classList.toggle("notScroll");
+  }
+  _searchInput.focus();
+});
+const closeBtn = document.querySelector(".close");
+closeBtn.addEventListener("click", () => {
+  overlay.classList.toggle("active");
+  body.classList.toggle("notScroll");
+  _searchInput.focus();
+});
+
+//  Top btn
+const topBtn = document.querySelector("aside nav button");
+topBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
 
 //  focus
 const searchBtn = document.querySelector(".submitBtn");
@@ -126,20 +134,4 @@ topBtn.addEventListener("focus", () => {
 });
 topBtn.addEventListener("blur", () => {
   topBtn.classList.toggle("btn-focus");
-});
-
-//  Modal close
-const overlay = document.querySelector(".overlay");
-overlay.addEventListener("click", (e) => {
-  if (e.target.className === "overlay") {
-    overlay.classList.toggle("active");
-    body.classList.toggle("notScroll");
-  }
-  _searchInput.focus();
-});
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", () => {
-  overlay.classList.toggle("active");
-  body.classList.toggle("notScroll");
-  _searchInput.focus();
 });
