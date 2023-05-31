@@ -2,23 +2,23 @@
 
 @font-face {
   font-family: 'omnigothic020';
-  src: url(./font/210\ 옴니고딕OTF\ 020.otf);
+  src: url(../font/210\ 옴니고딕OTF\ 020.otf);
 }
 @font-face {
   font-family: 'omnigothic030';
-  src: url(./font/210\ 옴니고딕OTF\ 030.otf);
+  src: url(../font/210\ 옴니고딕OTF\ 030.otf);
 }
 @font-face {
   font-family: 'omnigothic045';
-  src: url(./font/210\ 옴니고딕OTF\ 045.otf);
+  src: url(../font/210\ 옴니고딕OTF\ 045.otf);
 }
 @font-face {
   font-family: 'mazius-regular';
-  src: url(./font/MAZIUSREVIEW20.09-Regular.otf);
+  src: url(../font/MAZIUSREVIEW20.09-Regular.otf);
 }
 @font-face {
   font-family: 'mazius-extra';
-  src: url(./font/MAZIUSREVIEW20.09-Extraitalic.otf);
+  src: url(../font/MAZIUSREVIEW20.09-Extraitalic.otf);
 }
 
 *{
