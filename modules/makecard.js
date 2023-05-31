@@ -2,7 +2,7 @@ export function makeCard(movies) {
   for (let i in movies) {
     const { id, title, poster_path, overview } = movies[i];
 
-    const box = document.getElementById("flex-box");
+    const $box = document.getElementById("flex-box");
     const outerDiv = document.createElement("div");
     const innerDiv = document.createElement("div");
     const img = document.createElement("img");
@@ -23,6 +23,6 @@ export function makeCard(movies) {
     innerDiv.appendChild(p);
     outerDiv.appendChild(img);
     outerDiv.appendChild(innerDiv);
-    box.appendChild(outerDiv);
+    $box.appendChild(outerDiv);
   }
 }

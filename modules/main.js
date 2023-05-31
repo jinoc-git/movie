@@ -17,21 +17,21 @@ async function listMovieCard(arr) {
   if (!arr) {
     makeCard(movies);
   } else {
-    const box = document.getElementById("flex-box");
-    box.innerHTML = "";
+    const $box = document.getElementById("flex-box");
+    $box.innerHTML = "";
     makeCard(arr);
   }
 }
 listMovieCard();
 
 //  Search movie
-const frm = document.search;
-frm.addEventListener("submit", findMovie);
+const $frm = document.search;
+$frm.addEventListener("submit", findMovie);
 async function findMovie(e) {
   e.preventDefault();
   const movies = await fetchMovie();
 
-  const userInput = frm.searchInput.value.toLowerCase();
+  const userInput = $frm.searchInput.value.toLowerCase();
   const userMovieTitle = userInput.replace(/(\s*)/g, "");
   const matchMovies = movies.filter((item) => { 
     let titles = item.title.toLowerCase().replace(/(\s*)/g, "");
@@ -39,22 +39,22 @@ async function findMovie(e) {
   });
 
   if (matchMovies.length === 0) {
-    const box = document.getElementById("flex-box");
-    box.innerText = "찾으시는 영화가 없습니다. 검색어를 확인해 주세요.";
+    const $box = document.getElementById("flex-box");
+    $box.innerText = "찾으시는 영화가 없습니다. 검색어를 확인해 주세요.";
   } else {
     listMovieCard(matchMovies);
   }
 }
 
 //  Click logo
-const h1 = document.querySelector(".header h1");
-h1.addEventListener("click", () => {
+const $h1 = document.querySelector(".header h1");
+$h1.addEventListener("click", () => {
   window.location.reload();
 });
 
 //  Click content
-const flexBox = document.getElementById("flex-box");
-flexBox.addEventListener("click", (e) => {
+const $flexBox = document.getElementById("flex-box");
+$flexBox.addEventListener("click", (e) => {
   let content = e.target.parentNode;
   if (content.className !== "content") {
     content = content.parentNode;
@@ -69,7 +69,7 @@ flexBox.addEventListener("click", (e) => {
 });
 
 //  Open modal
-const body = document.querySelector("body");
+const $body = document.querySelector("body");
 async function openModal(num) {
   const movies = await fetchMovie();
   const clickMovie = movies.find((item) => item.id === parseInt(num));
@@ -79,7 +79,7 @@ async function openModal(num) {
 
   const modal = document.querySelector(".overlay");
   modal.classList.toggle("active");
-  body.classList.toggle("notScroll");
+  $body.classList.toggle("notScroll");
 }
 
 //  Close modal
