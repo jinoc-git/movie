@@ -93,7 +93,8 @@ $overlay.addEventListener("click", (e) => {
   $_searchInput.focus();
 });
 const $closeBtn = document.querySelector(".close");
-$closeBtn.addEventListener("click", () => {
+$closeBtn.addEventListener("click", (e) => {
+  e.preventDefault();
   $overlay.classList.toggle("active");
   $body.classList.toggle("notScroll");
   $_searchInput.focus();
