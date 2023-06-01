@@ -4,7 +4,7 @@ import { makeCard } from "./makecard.js";
 import { setModal } from "./setmodal.js";
 
 //  Fetch
-const fetchMovie = async function () {
+async function fetchMovie () {
   const response = await fetch(URL, OPTIONS);
   const data = await response.json();
   const movies = data.results;
@@ -12,7 +12,7 @@ const fetchMovie = async function () {
 };
 
 //  List card
-async function listMovieCard(arr) {
+async function listMovieCard (arr) {
   const movies = await fetchMovie();
   if (!arr) {
     makeCard(movies);
