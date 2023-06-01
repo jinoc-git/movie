@@ -3,7 +3,7 @@ export function setModal(clickMovie) {
     clickMovie;
   
   const $modalTitle = document.querySelector(".modal-body h3");
-  const $modalAverage = document.querySelector(".average");
+  const $modalAverage = document.querySelector(".modal-average");
   const $modalLanguage = document.querySelector(".language");
   const $modalImg = document.querySelector(".modal-content img");
   const $modalOverview = document.querySelector(".modal-content p");
