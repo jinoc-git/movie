@@ -179,9 +179,10 @@ section {
 }
 
 .content {
+  position: relative;
   cursor: pointer;
   width: 137.5px;
-  height: 340px;
+  height: auto;
   border-radius: 10px;
   box-shadow: 0 0 5px 5px rgba(50, 50, 50, 0.8);  
 }
@@ -189,6 +190,19 @@ section {
 .content img {
   width: 100%;
   border-radius: 10px;
+}
+
+.average {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  font-family: 'mazius-extra';
+  font-size: 10px;
+  color: #FFFFFF;
+  padding: 0px 5px 3px;
+  border-radius: 0px 0px 10px 0px;
+  box-shadow: 0 0 3px 3px rgba(50, 50, 50, 0.8);
+  background-color: #D6474D;
 }
 
 .content-text {
@@ -202,7 +216,7 @@ section {
 .content-text h3 {
   text-align: center;
   font-family: 'mazius-regular';
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .content-text hr {
@@ -216,7 +230,7 @@ section {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   
-  font-size: 14px;
+  font-size: 12px;
   white-space: normal;
   overflow: hidden;
   word-wrap: break-word;
@@ -237,7 +251,11 @@ section {
 
   .content {
     width: 275px;
-    height: auto;
+  }
+
+  .average {
+    font-size: 14px;
+    padding: 2px 7px 6px;
   }
   
   .content-text h3 {
@@ -252,6 +270,11 @@ section {
 @media( min-width: 1220px ) {
   #flex-box {
     width: 1200px;
+  }
+
+  .average {
+    font-size: 16px;
+    padding: 2px 8px 6px;
   }
 }
 
