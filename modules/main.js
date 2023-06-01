@@ -77,30 +77,31 @@ async function openModal(num) {
 
   setModal(clickMovie);
 
-  const modal = document.querySelector(".overlay");
-  modal.classList.toggle("active");
+  const $modal = document.querySelector(".overlay");
+  $modal.classList.toggle("active");
   $body.classList.toggle("notScroll");
 }
 
 //  Close modal
-const overlay = document.querySelector(".overlay");
-overlay.addEventListener("click", (e) => {
+const $overlay = document.querySelector(".overlay");
+const $_searchInput = document.getElementById("search-input");
+$overlay.addEventListener("click", (e) => {
   if (e.target.className === "overlay") {
-    overlay.classList.toggle("active");
-    body.classList.toggle("notScroll");
+    $overlay.classList.toggle("active");
+    $body.classList.toggle("notScroll");
   }
-  _searchInput.focus();
+  $_searchInput.focus();
 });
-const closeBtn = document.querySelector(".close");
-closeBtn.addEventListener("click", () => {
-  overlay.classList.toggle("active");
-  body.classList.toggle("notScroll");
-  _searchInput.focus();
+const $closeBtn = document.querySelector(".close");
+$closeBtn.addEventListener("click", () => {
+  $overlay.classList.toggle("active");
+  $body.classList.toggle("notScroll");
+  $_searchInput.focus();
 });
 
 //  Top btn
-const topBtn = document.querySelector("aside nav button");
-topBtn.addEventListener("click", (e) => {
+const $topBtn = document.querySelector("aside nav button");
+$topBtn.addEventListener("click", (e) => {
   e.preventDefault();
   window.scrollTo({
     top: 0,
@@ -108,24 +109,23 @@ topBtn.addEventListener("click", (e) => {
   });
 });
 
-//  focus
-const searchBtn = document.querySelector(".submitBtn");
-const _searchInput = document.getElementById("search-input");
-_searchInput.addEventListener("focus", () => {
-  _searchInput.classList.toggle("btn-focus");
+//  Focus input
+const $searchBtn = document.querySelector(".submitBtn");
+$_searchInput.addEventListener("focus", () => {
+  $_searchInput.classList.toggle("btn-focus");
 });
-_searchInput.addEventListener("blur", () => {
-  _searchInput.classList.toggle("btn-focus");
+$_searchInput.addEventListener("blur", () => {
+  $_searchInput.classList.toggle("btn-focus");
 });
-searchBtn.addEventListener("focus", () => {
-  searchBtn.classList.toggle("btn-focus");
+$searchBtn.addEventListener("focus", () => {
+  $searchBtn.classList.toggle("btn-focus");
 });
-searchBtn.addEventListener("blur", () => {
-  searchBtn.classList.toggle("btn-focus");
+$searchBtn.addEventListener("blur", () => {
+  $searchBtn.classList.toggle("btn-focus");
 });
-topBtn.addEventListener("focus", () => {
-  topBtn.classList.toggle("btn-focus");
+$topBtn.addEventListener("focus", () => {
+  $topBtn.classList.toggle("btn-focus");
 });
-topBtn.addEventListener("blur", () => {
-  topBtn.classList.toggle("btn-focus");
+$topBtn.addEventListener("blur", () => {
+  $topBtn.classList.toggle("btn-focus");
 });
