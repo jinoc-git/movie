@@ -55,16 +55,15 @@ $h1.addEventListener("click", () => {
 //  Click content
 const $flexBox = document.getElementById("flex-box");
 $flexBox.addEventListener("click", (e) => {
+  if(e.target.getAttribute('id') === 'flex-box') {
+    return false;
+  }  
+  
   let content = e.target.parentNode;
   if (content.className !== "content") {
     content = content.parentNode;
   }
-
   const contentId = content.getAttribute("id");
-  if (contentId === null || contentId === undefined) {
-    return false;
-  }
-
   openModal(contentId);
 });
 
