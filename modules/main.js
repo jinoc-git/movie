@@ -4,15 +4,15 @@ import { makeCard } from "./makecard.js";
 import { setModal } from "./setmodal.js";
 
 //  Fetch
-async function fetchMovie () {
+async function fetchMovie() {
   const response = await fetch(URL, OPTIONS);
   const data = await response.json();
   const movies = data.results;
   return movies;
-};
+}
 
 //  List card
-async function listMovieCard (arr) {
+async function listMovieCard(arr) {
   if (arr) {
     const $box = document.getElementById("flex-box");
     $box.innerHTML = "";
@@ -33,7 +33,7 @@ async function findMovie(e) {
 
   const userInput = $frm.searchInput.value.toLowerCase();
   const userMovieTitle = userInput.replace(/(\s*)/g, "");
-  const matchMovies = movies.filter((item) => { 
+  const matchMovies = movies.filter((item) => {
     let titles = item.title.toLowerCase().replace(/(\s*)/g, "");
     return titles.includes(userMovieTitle);
   });
@@ -55,9 +55,9 @@ $h1.addEventListener("click", () => {
 //  Click content
 const $flexBox = document.getElementById("flex-box");
 $flexBox.addEventListener("click", (e) => {
-  if(e.target.getAttribute('id') === 'flex-box') {
+  if (e.target.getAttribute("id") === "flex-box") {
     return false;
-  }  
+  }
 
   let content = e.target.parentNode;
   if (content.className !== "content") {

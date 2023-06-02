@@ -290,7 +290,7 @@ section {
   height: 100vh;
   z-index: 2;
 
-  background-color: rgba(50, 50, 50, 0.8);
+  background-color: rgba(10, 10, 10, 0.8);
 }
 
 .active {
