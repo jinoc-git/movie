@@ -13,13 +13,13 @@ async function fetchMovie () {
 
 //  List card
 async function listMovieCard (arr) {
-  const movies = await fetchMovie();
-  if (!arr) {
-    makeCard(movies);
-  } else {
+  if (arr) {
     const $box = document.getElementById("flex-box");
     $box.innerHTML = "";
     makeCard(arr);
+  } else {
+    const movies = await fetchMovie();
+    makeCard(movies);
   }
 }
 listMovieCard();
@@ -58,7 +58,7 @@ $flexBox.addEventListener("click", (e) => {
   if(e.target.getAttribute('id') === 'flex-box') {
     return false;
   }  
-  
+
   let content = e.target.parentNode;
   if (content.className !== "content") {
     content = content.parentNode;

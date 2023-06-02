@@ -168,9 +168,9 @@ section {
 #flex-box {
   display: flex;
   flex-wrap: wrap;
+  align-items: baseline;
   gap: 20px;
-  width: 345px;
-  min-height: 800px;
+  width: 335px;
   margin: 0 auto 50px;
   padding: 0 20px;
 
@@ -182,7 +182,7 @@ section {
   position: relative;
   cursor: pointer;
   width: 137.5px;
-  height: auto;
+  height: 325px;
   border-radius: 10px;
   box-shadow: 0 0 5px 5px rgba(50, 50, 50, 0.8);  
 }
@@ -243,14 +243,13 @@ section {
   }
   
   #flex-box {
-    width: 620px;
-    min-height: 700px;
-  
+    width: 620px;  
     font-size: 16px;
   }
 
   .content {
     width: 275px;
+    height: 555px;
   }
 
   .average {
